@@ -12,9 +12,6 @@ RUN git clone https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2
 WORKDIR /app
 ADD autofill.js /app/src/js
 RUN cat src/js/autofill.js >> src/js/main.js 
-#RUN echo "import { setFormValues } from './autofill'" >> src/js/main.js && \
-#    echo "(function() { setFormValues(); })();" >> src/js/main.js
-#    echo "setFormValues() " >> src/js/main.js
 RUN npm i
 RUN PUBLIC_URL="/" npm run build:dev
 

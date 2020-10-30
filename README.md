@@ -16,12 +16,14 @@ $ docker run -p 80:80 acaranta/attestation-deplacement-covid-autofill
 ```
 
 ## Autofill
-Cett version proposee permet de passer en parametre de l'URL les champs a remplir, reste a selectionner la raison et generer votre atestation normalement.
+Cette version proposee permet de passer en parametre de l'URL les champs a remplir, reste a selectionner la raison et generer votre atestation normalement.
+Ce qui est proposé ici n'est en aucune facon prevu pour tricher/contourner quoi que ce soit, mais pour permettre un remplissage des donnees fixes plus rapidemment (via bookmark ou tag NFC par exemple).
+
 exemple d'URL :
 ```
-http://<containeraddress>/index.html?firstname=Jean&lastname=Dupont&birthday=01/01/1970&lieunaissance=Lyon&address=999 Avenue de France&town=Paris&zipcode=75000
+http://<containeraddress>/index.html?firstname=Jean&lastname=Dupont&birthday=01/01/1970&placeofbirth=Lyon&address=999 Avenue de France&city=Paris&zipcode=75000
 ```
 ## Crédits
 
-Ce projet a été réalisé à partir d'un fork du dépôt [covid-19-certificate](https://github.com/lab-mi/covid-19-certificate).
+Ce projet a été réalisé à partir d'un fork du dépôt [LAB-MI/attestation-deplacement-derogatoire-q4-2020](https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020).
 
