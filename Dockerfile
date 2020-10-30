@@ -8,13 +8,15 @@ RUN apt-get update && \
       libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/LAB-MI/deplacement-covid-19.git /app  
+RUN git clone https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020.git /app  
 WORKDIR /app
-RUN sed -i '/"reactSnap": {/a     "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu"],' package.json
-ADD autofill.js /app/src
-RUN cat src/autofill.js >>src/certificate.js
+ADD autofill.js /app/src/js
+RUN cat src/js/autofill.js >> src/js/main.js 
+#RUN echo "import { setFormValues } from './autofill'" >> src/js/main.js && \
+#    echo "(function() { setFormValues(); })();" >> src/js/main.js
+#    echo "setFormValues() " >> src/js/main.js
 RUN npm i
-RUN PUBLIC_URL="/" npm run build
+RUN PUBLIC_URL="/" npm run build:dev
 
 FROM httpd:2.4
 COPY --from=buildgen /app/dist/* /usr/local/apache2/htdocs/
