@@ -1,19 +1,64 @@
+import { $, $$, downloadBlob } from './dom-utils'
 
-function setFormValues()
-{
-	var form = document.forms["form-profile"];
-	var args = location.search.substr(1).split(/&/);
-	if (form.elements.length > 0) {
-		for (var i=0; i<args.length; ++i) {
-			var tmp = args[i].split(/=/);
-			if (tmp[0] != "") {
-				form.elements["field-"+decodeURIComponent(tmp[0])].value = decodeURIComponent(tmp[1].replace("+", " "));
-			}
-		}
-	}
-
+function extractQueryString() {
+  var params = {};
+  var url = new URL(window.location);
+  for(var kv of url.searchParams.entries()) {
+    if (kv[0] == "reason") {
+      if (!("reasons" in params)) {
+        params["reasons"] = [];
+      }
+      params["reasons"].push(kv[1]);
+    } else {
+      params[kv[0]] = kv[1];
+    }
+  }
+  return params;
 }
 
+function autofill (formInputs, reasonInputs) {
+  var urlParams = extractQueryString();
+
+  var formInputTypes = ["text", "number"];
+  formInputs.forEach((input) => {
+    if (formInputTypes.indexOf(input.type) > -1) {
+      if (input.name in urlParams) {
+        input.value = urlParams[input.name];
+      }
+    }
+
+  });
+
+  reasonInputs.forEach((input) => {
+    if (input.type == "checkbox" && input.name == "field-reason") {
+      if ("reasons" in urlParams) {
+        urlParams["reasons"].forEach(function(paramValue) {
+            if (input.value == paramValue) {
+              input.checked = true;
+              return;
+            }
+          }
+        );
+      }
+    }
+  });
+}
+
+function autogen(formInputs) {
+  $("#generate-btn").click();
+}
+
+export function gofill() {
+	const formInputs = $$('#form-profile input')
+	const reasonInputs = [...$$('input[name="field-reason"]')]
+	autofill(formInputs, reasonInputs)
+	autogen();
+}
+
+/*
+import { gofill } from './autofill'
+
 (function() { 
-	setFormValues();
+	gofill() 
 })();
+*/

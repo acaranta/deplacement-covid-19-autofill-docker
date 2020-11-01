@@ -11,7 +11,10 @@ RUN apt-get update && \
 RUN git clone https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020.git /app  
 WORKDIR /app
 ADD autofill.js /app/src/js
-RUN cat src/js/autofill.js >> src/js/main.js 
+ADD mainjsimport.js /tmp
+#RUN cat src/js/autofill.js >> src/js/main.js 
+RUN cat /tmp/mainjsimport.js >>src/js/main.js 
+
 RUN npm i
 RUN PUBLIC_URL="/" npm run build:dev
 

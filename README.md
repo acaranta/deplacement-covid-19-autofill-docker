@@ -26,4 +26,4 @@ http://<containeraddress>/index.html?firstname=Jean&lastname=Dupont&birthday=01/
 ## Crédits
 
 Ce projet a été réalisé à partir d'un fork du dépôt [LAB-MI/attestation-deplacement-derogatoire-q4-2020](https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020).
-
+Le code JS à été revu par un pro, qui a fait quelque chose de propre, beau, ajouté la gestion de la "raison" ainsi que la lancement de la génération du PDF directement :) ... Merci Dom ! ^^
