@@ -3,7 +3,8 @@ import { $, $$, downloadBlob } from './dom-utils'
 function extractQueryString() {
   var params = {};
   var url = new URL(window.location);
-  for(var kv of url.searchParams.entries()) {
+  for(var hashParam of url.hash.substr(1).split(/&/)) {
+    var kv = decodeURIComponent(hashParam).split(/=/);
     if (kv[0] == "reason") {
       if (!("reasons" in params)) {
         params["reasons"] = [];
