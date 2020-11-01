@@ -21,7 +21,7 @@ Ce qui est proposé ici n'est en aucune facon prevu pour tricher/contourner quoi
 
 exemple d'URL :
 ```
-http://<containeraddress>/index.html?firstname=Jean&lastname=Dupont&birthday=01/01/1970&placeofbirth=Lyon&address=999 Avenue de France&city=Paris&zipcode=75000
+http://<containeraddress>/index.html#firstname=Jean&lastname=Dupont&birthday=01/01/1970&placeofbirth=Lyon&address=999 Avenue de France&city=Paris&zipcode=75000
 ```
 ## Crédits
 
