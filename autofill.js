@@ -53,7 +53,17 @@ export function gofill() {
 	const formInputs = $$('#form-profile input')
 	const reasonInputs = [...$$('input[name="field-reason"]')]
 	autofill(formInputs, reasonInputs)
-	autogen();
+
+       // FIX: generate time
+       const getCurrentTime = () => {
+           const date = new Date()
+           return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit'})
+       }
+      var element = document.getElementById('field-heuresortie');
+      element.value = getCurrentTime()
+      // ENDFIX
+
+      autogen();
 }
 
 /*

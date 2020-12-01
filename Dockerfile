@@ -15,6 +15,11 @@ ADD mainjsimport.js /tmp
 #RUN cat src/js/autofill.js >> src/js/main.js 
 RUN cat /tmp/mainjsimport.js >>src/js/main.js 
 
+# Fix new version
+RUN sed -i 's/travail: 488/travail: 553/;s/achats: 417/achats_culturel_cultuel: 482/;s/sante: 347/sante: 434/;s/famille: 325/famille: 410/;s/handicap: 291/handicap: 373/;s/sport_animaux: 269/sport_animaux: 349/;s/convocation: 199/convocation: 276/;s/missions: 178/missions: 252/;s/enfants: 157/enfants: 228/;s/107, 657/92, 702/;s/107, 627/92, 684/;s/240, 627/214, 684/;s/124, 596/104, 665/;s/59,/47,/;s/93, 122/78, 76/;s/76, 92, 11/63, 58, 11/;s/246, 92, 11/227, 58, 11/' /app/src/js/pdf-util.js
+RUN sed -i 's/"achats"/"achats_culturel_cultuel"/' /app/src/form-data.json
+RUN wget https://media.interieur.gouv.fr/deplacement-covid-19/certificate.0eed39bb.pdf -O /app/src/certificate.pdf
+
 RUN npm i
 RUN PUBLIC_URL="/" npm run build:dev
 
