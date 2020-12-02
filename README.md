@@ -3,7 +3,7 @@
 ## Utilisation avec Docker
 soit builder le conteneur localement :
 ```console
-$ docker build -t attesationcovid .
+$ docker build -t attestationcovid .
 ```
 et le lancer :
 ```console
