@@ -43,3 +43,4 @@ Ce projet a été réalisé à partir d'un fork du dépôt [LAB-MI/attestation-d
 Le code JS à été revu par un pro, qui a fait quelque chose de propre, beau, ajouté la gestion de la "raison" ainsi que la lancement de la génération du PDF directement :) ... Merci Dom ! ^^
 
 Merci à @alexisries pour la conversion des URI Fragments.
+Merci à @Hybris42 pour les differents tweaks et corrections rapide apportées.
