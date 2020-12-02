@@ -8,15 +8,21 @@ RUN apt-get update && \
       libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget git && \
     rm -rf /var/lib/apt/lists/*
 
+# Fetch upstream code to be dockerized, built and run
 RUN git clone https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020.git /app  
 WORKDIR /app
+
+# Adding new autofill JS functions
 ADD autofill.js /app/src/js
+
+# Injecting autofill functions call to main code
 ADD mainjsimport.js /tmp
-#RUN cat src/js/autofill.js >> src/js/main.js 
 RUN cat /tmp/mainjsimport.js >>src/js/main.js 
 
+# Build/compile the project
 RUN npm i
 RUN PUBLIC_URL="/" npm run build:dev
 
+# Generate final lighter image, not containing the source and/or build tools, for faster transfers and use
 FROM httpd:2.4
 COPY --from=buildgen /app/dist/* /usr/local/apache2/htdocs/
