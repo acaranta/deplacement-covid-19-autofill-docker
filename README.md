@@ -1,5 +1,5 @@
 # Générateur de certificat de déplacement
-
+[![](https://img.shields.io/docker/pulls/acaranta/attestation-deplacement-covid-autofill) ![](https://img.shields.io/docker/cloud/build/acaranta/attestation-deplacement-covid-autofill)](https://hub.docker.com/repository/docker/acaranta/attestation-deplacement-covid-autofill)
 ## Utilisation avec Docker
 soit builder le conteneur localement :
 ```console
